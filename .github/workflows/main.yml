@@ -23,7 +23,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
-          command: npm run test 
+          command: npm run cypress:run
 
       - uses: actions/upload-artifact@v3
         if: always()
