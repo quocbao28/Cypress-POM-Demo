@@ -29,5 +29,5 @@ jobs:
         if: always()
         with:
           name: result
-          path: reports/
+          path: reports/html
 
