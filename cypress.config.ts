@@ -8,7 +8,6 @@ export default defineConfig({
   viewportWidth: 1200,
   defaultCommandTimeout: 30000,
   pageLoadTimeout: 60000,
-  nodeVersion: 'bundled',
   reporter: 'cypress-mochawesome-reporter',
 
   e2e: {
