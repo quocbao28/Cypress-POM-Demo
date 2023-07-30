@@ -1,0 +1,33 @@
+name: Run Test and Deploy Result page
+
+on: 
+  workflow_dispatch:
+    inputs:
+      testBranch:
+        description: "Which branch to checkout and run test"
+        required: false
+        default: master
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v4
+        with:
+          runTests: false
+
+      - name: Run Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          command: npm run test 
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: result
+          path: reports/
+

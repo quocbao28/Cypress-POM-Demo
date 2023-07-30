@@ -1,0 +1,57 @@
+{
+  "root": true,
+  "plugins": ["cypress"],
+  "env": {
+    "cypress/globals": true
+  },
+  "extends": ["react-app", "airbnb-base", "plugin:prettier/recommended"],
+  "globals": {
+    "SystemJS": "writable"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "no-undef": "off",
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-unused-expressions": ["error"]
+      }
+    },
+    {
+      "files": ["**/testUtils/**/*.ts", "**/testUtils/**/*.tsx"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": ["**/testUtils/**/*.ts", "**/testUtils/**/*.tsx"]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/cypress/support/commands.ts"],
+      "rules": {
+        "@typescript-eslint/no-namespace": 0
+      }
+    }
+  ]
+}
