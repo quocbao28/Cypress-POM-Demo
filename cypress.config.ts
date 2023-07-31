@@ -8,13 +8,16 @@ export default defineConfig({
   viewportWidth: 1200,
   defaultCommandTimeout: 30000,
   pageLoadTimeout: 60000,
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-multi-reporters",
+
+  reporterOptions: {
+    "configFile": "reporter-config.json"
+  },
 
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
     },
 
 
